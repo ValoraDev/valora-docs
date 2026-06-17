@@ -15,6 +15,8 @@ own inventory, sets per-unit prices, and an NPC sells to other players **24/7** 
 long as the owner keeps the **state tax** paid. Everything is validated on the server,
 the framework is auto-detected, and the whole UI is driven by one locale file.
 
+<figure><img src="../.gitbook/assets/vlr_marketplace_preview.png" alt="Valora Marketplace — a player-owned stand and the admin placement panel in game"><figcaption>The owner's stand UI (left) and the admin placement panel (right), in game.</figcaption></figure>
+
 | | |
 |---|---|
 | **Version** | 1.0.0 |

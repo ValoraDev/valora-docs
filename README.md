@@ -1,5 +1,7 @@
 ---
 description: Official documentation for the Valora script suite for FiveM.
+cover: .gitbook/assets/valora-cover.png
+coverY: 0
 ---
 
 # Welcome to Valora
