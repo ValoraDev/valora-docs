@@ -1,0 +1,4 @@
+# Keep docs as LF so GitBook ↔ Git diffs stay clean across OSes
+*.md   text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
