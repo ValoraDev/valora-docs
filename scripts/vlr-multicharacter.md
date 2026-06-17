@@ -18,9 +18,16 @@ auto-detected at start.
 |---|---|
 | **Version** | 1.0.0 |
 | **Author** | Valora |
-| **Framework** | QBox (`qbx_core`) / QBCore (`qb-core`) — auto-detected, QBox preferred |
+| **Framework** | QBox (`qbx_core`) / QBCore (`qb-core`) — auto-detected, QBox preferred. **ESX is not supported.** |
 | **Storage** | oxmysql (`vlr_multicharacter_slots` table, self-creating) + your framework's `players` / `playerskins` tables (read-only) |
 | **Built on** | ox_lib + oxmysql |
+
+{% hint style="warning" %}
+**QBox / QBCore only — ESX is not supported.** Unlike the rest of the Valora suite, a
+character selector ties directly into the framework's own character creation, login/logout
+and database schema (the QB-shaped `players` / `playerskins` tables). Supporting ESX would
+be a full data-layer port, not a config switch, so this resource targets the QB family only.
+{% endhint %}
 
 ## Features
 

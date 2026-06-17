@@ -22,6 +22,14 @@ body damage so a car comes back exactly as it was parked.
 | **Storage** | oxmysql (own `vlr_garages` table + columns added to your vehicles table) |
 | **Built on** | ox_lib + oxmysql + PolyZone |
 
+{% hint style="info" %}
+A framework (ESX / QBCore / QBox) is **required** — `vlr_garages` is not standalone. All
+three are genuinely supported through a runtime bridge. **ESX note:** an impounded vehicle
+is marked with `stored = 2` on the `owned_vehicles` table; that is correct for `vlr_garages`
+itself, but another ESX garage script reading that column may treat the car as "stored".
+Run one garage system at a time.
+{% endhint %}
+
 ## Features
 
 * **Standard garages** — park & retrieve owned vehicles, with per-garage slot limits
