@@ -71,7 +71,7 @@ Run one garage system at a time.
 | Framework — ESX / QBCore / QBox | Required | Auto-detected via `Config.Framework`. |
 | [ox_inventory](https://github.com/overextended/ox_inventory) / qb-inventory / qs-inventory | Optional | `Config.Inventory` — only used where inventory access is needed. |
 | Fuel resource (LegacyFuel, ox_fuel, ps-fuel, lc_fuel, …) | Optional | `Config.FuelResource` — set to `nil` to use native fuel. |
-| Vehicle-keys resource (qbx/qb/wasabi or any export) | Optional | `Config.KeysResource` — set to `nil` to disable key handling. |
+| Vehicle-keys resource (qbx/qb/wasabi or any export) | Optional | `Config.KeysResource` — keys are **granted when a vehicle is taken out** and **revoked when it is parked**, tied to the plate. Built-in adapters for `qbx_vehiclekeys`, `qb-vehiclekeys` and `wasabi_carlock`, plus a generic `GiveKeys`/`RemoveKeys` export fallback for any other keys script. Set to `nil` to disable key handling. |
 | uz_AutoShot | Optional | Source for vehicle preview images (`Config.VehicleImages.autoShot`). |
 
 {% hint style="info" %}
