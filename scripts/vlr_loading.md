@@ -103,7 +103,7 @@ relative to the `html/` folder. The top-level sections:
 
 | Section | What it controls |
 |---|---|
-| `language` | UI language tag (e.g. `'bs-BA'`). |
+| `language` | UI language tag (e.g. `'en-US'`). |
 | `brand` | Logo, name/suffix, eyebrow, season, location, network label and the motto block. |
 | `theme` | `accent` / `accentBright` colours, `interfaceScale`, and the right-panel `panelWidth`. |
 | `serverStatus` | Online flag, online/offline labels, status description, clock and season toggles. |
@@ -122,10 +122,10 @@ Each tab supports `type: 'text'`, `'list'` or `'keybinds'`. Example (a keybinds 
 ```js
 {
     id: 'keybinds',
-    navigationLabel: 'KOMANDE',
+    navigationLabel: 'CONTROLS',
     index: '02',
-    eyebrow: 'BRZI PREGLED',
-    title: 'GLAVNE KOMANDE',
+    eyebrow: 'QUICK REFERENCE',
+    title: 'MAIN CONTROLS',
     description: 'Most important controls after you spawn.',
     type: 'keybinds',
     items: [

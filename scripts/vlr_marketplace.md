@@ -67,8 +67,9 @@ the framework is auto-detected, and the whole UI is driven by one locale file.
   components) carry over when `Config.Items.allowWeapons` is on.
 * **Optional Discord webhook logging** — stand purchases, sales, tax suspensions,
   repossessions and admin actions.
-* **i18n** — English and Bosnian ship out of the box; one JSON file translates every
-  string including the entire NUI, independent of the `ox:locale` convar.
+* **Localization** — ships in **English**, fully translatable via the open `locales/` files.
+  More languages are planned over time. One JSON file translates every string including the
+  entire NUI, independent of the `ox:locale` convar.
 * **Themeable NUI** — graphite design, one accent color (`Config.UI.accent`) recolors
   everything; no `backdrop-filter`.
 
@@ -154,7 +155,7 @@ Everything lives in the open `config.lua`. The key groups:
 
 | Key | Meaning |
 |---|---|
-| `Config.Locale` | UI/notification language (`'en'`, `'ba'`, or any `locales/<code>.json` you add). |
+| `Config.Locale` | UI/notification language (defaults to `'en'`; add a `locales/<code>.json` to translate into any language). |
 | `Config.Debug` | Verbose development prints. |
 
 ### UI / theme — `Config.UI`

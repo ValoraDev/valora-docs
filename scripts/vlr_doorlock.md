@@ -57,7 +57,7 @@ auto-detected.
   lockpicks and editor changes, with retention limits; optional Discord webhook.
 * **Server-authoritative** — distance, permission and cooldown are all re-validated on
   the server; passcodes and full access rules are never sent in normal player sync.
-* **i18n** — config-driven locales (English + Bosnian shipped), independent of `ox:locale`.
+* **Localization** — ships in **English**, fully translatable via the open `locales/` files. More languages are planned over time. Config-driven, independent of `ox:locale`.
 * **Developer API** — server exports plus a `vlr_doorlock:stateChanged` event for
   alarms, dispatch, robberies or logging.
 
@@ -154,7 +154,7 @@ Everything lives in the open `config.lua`.
 
 | Key | Meaning |
 |---|---|
-| `Config.Locale` | Active locale (`'ba'` / `'en'`), independent of `ox:locale`. |
+| `Config.Locale` | Active locale (default `'en'`), independent of `ox:locale`. Add more `locales/<code>` files to translate. |
 | `Config.Debug` | Enables debug prints. |
 | `Config.UI` | NUI accent colour, panel `position`, and `showDistance`. |
 | `Config.Notify` | Notification function (defaults to `lib.notify`). |

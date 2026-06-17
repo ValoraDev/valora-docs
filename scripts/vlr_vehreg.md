@@ -66,7 +66,7 @@ integration when present.
 * **Server-authoritative** — identity from `source`, ownership and fees validated server-side,
   the server decides pass/fail; dates are formatted server-side and the NUI only renders
   ready-made strings (vanilla JS, `textContent`, code-drawn SVG, no emoji, no `backdrop-filter`).
-* **Localised** — `en` + `ba` locale files, switchable via `Config.Locale`.
+* **Localization** — ships in **English**, fully translatable via the open `locales/` files. More languages are planned over time.
 
 ## Dependencies
 
@@ -109,15 +109,15 @@ The four tables **self-create on first start** (`CREATE TABLE IF NOT EXISTS`). I
 
 ### 3. (Optional) Register the document item
 
-To issue the physical "saobraćajna" item, register it in `ox_inventory/data/items.lua`:
+To issue the physical registration-document item, register it in `ox_inventory/data/items.lua`:
 
 ```lua
 ['vehicle_registration'] = {
-    label = 'Saobraćajna',
+    label = 'Vehicle Registration',
     weight = 10,
     stack = false,
     close = true,
-    description = 'Potvrda o registraciji vozila',
+    description = 'Vehicle registration document',
     client = { export = 'vlr_vehreg.useDocument' },
 },
 ```
@@ -182,7 +182,7 @@ Everything lives in the open `config.lua`. Top-level sections:
 
 | Section | What it controls |
 |---|---|
-| `Config.Locale` / `Config.Debug` / `Config.Framework` | Active locale (`'ba'`/`'en'`), diagnostics gate, framework override (`auto`/`qbox`/`qb`/`esx`/`standalone`). |
+| `Config.Locale` / `Config.Debug` / `Config.Framework` | Active locale (default `en`; add more `locales/<code>` files to translate), diagnostics gate, framework override (`auto`/`qbox`/`qb`/`esx`/`standalone`). |
 | `Config.Payment` | Charge account (`cash`/`bank`), cash fallback, currency symbol, optional nc-banking `society` deposit. |
 | `Config.Prices` | Default fees: `newRegistration`, `renewal`, `inspection`, `titleChange`, `transfer`, `duplicate`. |
 | `Config.Registration` | `validDays`, `renewGraceDays`, `expireWarnDays`, `inspectionValidHours`, re-inspection rules, expiry sweep interval, `vinPrefix`, `plateMaxLength`. |
@@ -262,7 +262,7 @@ are not part of the integration contract.
 
 * On registration: `AddPlateToOwnedPlates(plate)` so t1ger stops randomizing the vehicle's
   mileage/condition.
-* On a passed inspection: `AddServiceHistory(plate, 'Tehnički pregled', mileage, …)`.
+* On a passed inspection: `AddServiceHistory(plate, 'Technical Inspection', mileage, …)`.
 * `ChangeRegistrationPlate` also calls `UpdateVehicleDataPlate(old, new)`.
 * The inspection reads `GetCorePartHealth`, `DoesVehicleHaveFailuredParts` and
   `GetVehicleMileage` for an authoritative result. Toggle via `Config.Integrations.t1ger`.
@@ -270,8 +270,8 @@ are not part of the integration contract.
 ### lb-tablet (auto, plug-and-play — no lb-tablet edits)
 
 When lb-tablet is running, the resource writes the registration status straight into its MDT
-tables — it ensures a vehicle MDT profile and applies a status **tag** (`REGISTROVANO` /
-`REG. ISTEKLA` / `NEREGISTROVANO` / `SUSPENDOVANO`). Tuneable via
+tables — it ensures a vehicle MDT profile and applies a status **tag** (e.g. `REGISTERED` /
+`EXPIRED` / `UNREGISTERED` / `SUSPENDED`). Tuneable via
 `Config.Integrations.lbTablet` (`department`, `tagType`, `appliedType`, `tags`, and the
 on-start backfill). The exports and `/regcheck` remain a backend-agnostic path for any other
 MDT/dispatch.

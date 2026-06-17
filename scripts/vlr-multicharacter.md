@@ -9,7 +9,7 @@ description: >-
 # vlr-multicharacter — Character Selection
 
 `vlr-multicharacter` replaces the default (and escrowed) character selector with a
-maintainable Valora resource. It keeps the familiar Prism-style flow — one cinematic
+maintainable Valora resource. It keeps the familiar flow — one cinematic
 preview ped, animated camera, full character details — while moving every ownership,
 validation and slot decision to the server. It is QBox-first with QBCore compatibility,
 auto-detected at start.
@@ -40,7 +40,7 @@ auto-detected at start.
   selection and first-appearance creation, then returned to bucket `0` on spawn.
 * **Appearance adapters** — `illenium-appearance`, `fivem-appearance` and `qb-clothing`
   are supported for preview and first-character customization.
-* **Optional spawn-selector integration** — `prism-spawnselector`, `qbx_spawn` or
+* **Optional spawn-selector integration** — a custom spawn-selector resource, `qbx_spawn` or
   `qb-spawn`, or `none` to spawn at the stored/last position.
 * **Starter items** — configurable items handed to a brand-new character (via
   ox_inventory when present, otherwise the framework).
@@ -48,7 +48,7 @@ auto-detected at start.
   character data and NUI are ready, and can optionally wait for `ox_inventory` to finish
   building the player's inventory.
 * **Commands** — `/relog` to return to selection and an ACE-gated `/setcharslots`.
-* **i18n** — Bosnian and English locales, config-driven and independent of `ox:locale`.
+* **Localization** — ships in **English**, fully translatable via the open `locales/` files. More languages are planned over time. Config-driven and independent of `ox:locale`.
 * **Valora industrial-luxe NUI** — vanilla JS, no build step, sharing the
   `vlr_marketplace` design system.
 
@@ -61,11 +61,11 @@ auto-detected at start.
 | `qbx_core` **or** `qb-core` | ✅ | The character framework — auto-detected (QBox preferred). One of the two must be present. |
 | [ox_inventory](https://github.com/overextended/ox_inventory) | ⬚ Optional | Used for starter items and the optional "wait until inventory is ready" login gate. Falls back to the framework when absent. |
 | `illenium-appearance` / `fivem-appearance` / `qb-clothing` | ⬚ Optional | Appearance adapter for preview and first-character customization (`illenium-appearance` by default). |
-| `prism-spawnselector` / `qbx_spawn` / `qb-spawn` | ⬚ Optional | Spawn selector, only when `Config.SpawnSelector` is enabled. |
+| A spawn-selector resource / `qbx_spawn` / `qb-spawn` | ⬚ Optional | Spawn selector, only when `Config.SpawnSelector` is enabled. |
 | `vlr_loading` | ⬚ Optional | The Valora loading overlay this resource hands off to. |
 
 {% hint style="info" %}
-**Do not run two character selectors at once.** Disable `prism-multicharacter`,
+**Do not run two character selectors at once.** Disable
 `qbx-multicharacter` or any other selector before starting `vlr-multicharacter`.
 {% endhint %}
 
@@ -104,7 +104,6 @@ add_ace group.admin vlr.multicharacter.admin allow
 ### 3. Disable the old selector
 
 ```cfg
-# ensure prism-multicharacter
 # ensure qbx-multicharacter
 ```
 
@@ -145,7 +144,7 @@ Everything is in the open `config.lua`.
 | Key | Purpose |
 |---|---|
 | `Config.Debug` | Enable debug prints (otherwise silent). |
-| `Config.Locale` | Active locale — `'ba'` or `'en'`. |
+| `Config.Locale` | Active locale — defaults to `'en'`. Add more `locales/<code>` files to translate. |
 | `Config.Framework` | `'auto'`, `'qbox'` or `'qbcore'`. `auto` checks `qbx_core` then `qb-core`. |
 
 ### Interface & cursor
@@ -170,7 +169,7 @@ fallback.
 
 * `Config.SelectionBucket` — `enabled` and `base` for the private per-player routing bucket.
 * `Config.DefaultSpawn` — `vec4` spawn for a freshly created character.
-* `Config.SpawnSelector` — `'none'`, `'auto'`, `'prism-spawnselector'`, `'qbx_spawn'` or `'qb-spawn'`.
+* `Config.SpawnSelector` — `'none'`, `'auto'`, a custom spawn-selector resource, `'qbx_spawn'` or `'qb-spawn'`.
 * `Config.Scene` — the preview interior: hidden-player and ped positions, camera/focus
   vectors, scenario, stream radius/timeout and settle timings.
 * `Config.Camera` — `fov`, `nearDof`, `farDof`, `dofStrength`.
@@ -223,7 +222,7 @@ Invoked by the resource's own client; listed for integration awareness.
 
 | Symptom | Fix |
 |---|---|
-| The old selector still shows | Disable `prism-multicharacter` / `qbx-multicharacter`, and set QBox `characters.useExternalCharacters = true`. |
+| The old selector still shows | Disable `qbx-multicharacter` or any other character selector, and set QBox `characters.useExternalCharacters = true`. |
 | No characters appear | The player's `players` rows are matched by Rockstar `license`/`license2` — confirm the framework is writing those identifiers. |
 | Stuck on the loading overlay | `Config.Login.waitForOxInventory` is on and `ox_inventory` never reported ready — start `ox_inventory` before this resource or set a positive `oxInventoryTimeout`. |
 | `/setcharslots` says "not allowed" | Grant the ACE: `add_ace group.admin vlr.multicharacter.admin allow`. |

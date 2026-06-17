@@ -11,7 +11,6 @@
 ## Scripts
 
 * [vlr_armour — Armour System](scripts/vlr_armour.md)
-* [vlr_hud — HUD](scripts/vlr_hud.md)
 * [vlr_vehreg — Vehicle Registration](scripts/vlr_vehreg.md)
 * [vlr_marketplace — Player Marketplace](scripts/vlr_marketplace.md)
 * [vlr_garages — Garages](scripts/vlr_garages.md)

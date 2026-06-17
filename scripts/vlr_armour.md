@@ -46,7 +46,7 @@ and the framework is auto-detected.
   durability sync path only ever accepts a *decrease*.
 * **Live HUD** — circular "pool" showing the helmet's condition only (the native HUD
   already shows the armour bar); 8 positions, no `backdrop-filter`.
-* **i18n** — config-driven locales (English + Serbian included), independent of `ox:locale`.
+* **Localization** — ships in **English**, fully translatable via the open `locales/` files. More languages are planned over time.
 
 ## Dependencies
 
@@ -181,8 +181,8 @@ durability, GTA handles the split; no zone/penetration logic).
 * `Config.AutoRemoveHelmetIfTakenOff` — auto-unequip the helmet if a clothing menu
   strips the prop (no invisible head protection).
 * `Config.Commands` — names for the remove-vest / remove-helmet commands.
-* `Config.Locale` — `'en'` or `'sr'` (add more `locales/<code>.json`); independent of
-  `ox:locale`.
+* `Config.Locale` — defaults to `'en'` (add more `locales/<code>.json` files to translate);
+  independent of `ox:locale`.
 
 ### Visual armour
 

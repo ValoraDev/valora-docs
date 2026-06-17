@@ -42,7 +42,8 @@ custom-prop catalog lets you place streamed props in the world that are synced t
 * **Auto stand-up** — the player stands automatically on damage/ragdoll, death, or when
   entering a vehicle (each configurable).
 * **Industrial-luxe Valora NUI** — graphite + gold, vanilla JS, no build step, no
-  `backdrop-filter`; locale-driven (`en` / `ba`).
+  `backdrop-filter`; locale-driven, ships in **English**, fully translatable via the open
+  `locales/` files. More languages are planned over time.
 
 ## Dependencies
 
@@ -132,7 +133,7 @@ Everything lives in the open `config.lua`. Most day-to-day tuning happens **in g
 
 | Key | Meaning |
 |---|---|
-| `Config.Locale` | UI / notification language — `'en'` or `'ba'` (add more `locales/<code>.json`). |
+| `Config.Locale` | UI / notification language — default `'en'`; add more `locales/<code>.json` files to translate. |
 | `Config.Debug` | Developer logging. |
 | `Config.UI.accent` | Panel accent colour (default Valora gold `#d4af37`). |
 | `Config.Commands` | Command names — `admin` (default `sitadmin`) and `stand` (default `standup`). |

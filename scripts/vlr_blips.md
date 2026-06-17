@@ -43,7 +43,8 @@ an identifier allow-list.
   admin-only and are removed from clients live when toggled off.
 * **Access control** — ACE permission and/or an identifier allow-list; a player passes
   if **either** check matches. Every mutation is re-checked server-side.
-* **i18n** — config-driven locales; Bosnian (`ba`, default) and English (`en`) ship.
+* **Localization** — ships in **English**, fully translatable via the open `locales/`
+  files. More languages are planned over time.
 
 ## Dependencies
 
@@ -129,7 +130,7 @@ live in `locales/`.
 |---|---|---|
 | `Config.Framework` | `'auto'` | `'auto'` picks the first started framework (qbox > qbcore > esx); or force `'qbox'` / `'qbcore'` / `'esx'`. |
 | `Config.Notify` | `'auto'` | Notification provider: `'auto'` uses ox_lib when present, else the framework native (`'ox_lib'` / `'qb'` / `'esx'`). |
-| `Config.DefaultLocale` | `'ba'` | Active locale (`ba` or `en`). |
+| `Config.DefaultLocale` | `'en'` | Active locale. Ships with `en`; add more `locales/<code>` files to translate. |
 | `Config.FallbackLocale` | `'en'` | Used when a key is missing in the active locale. |
 | `Config.Access.UseAce` | `true` | Enable ACE-permission access. |
 | `Config.Access.AcePerm` | `'vlr_blips.manage'` | The ACE object checked with `IsPlayerAceAllowed`. |
@@ -162,8 +163,8 @@ you want directly into the numeric field.
 
 ### `locales/`
 
-`ba.lua` (default) and `en.lua` hold the notification and placement-prompt strings. Add
-more locales by mirroring those files and pointing `Config.DefaultLocale` at the new code.
+`en.lua` (default) holds the notification and placement-prompt strings. Add
+more locales by mirroring that file and pointing `Config.DefaultLocale` at the new code.
 
 ## Commands
 

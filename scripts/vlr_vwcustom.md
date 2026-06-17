@@ -47,8 +47,9 @@ required.
   late-join hydration.
 * **Framework-agnostic** — an auto-detecting bridge (qbox > qb > esx) is used **only** for
   the admin permission gate; the sign itself runs standalone.
-* **Industrial-luxe NUI** — vanilla JS, no build step, no CDN, CEF-safe, no emoji; English
-  and Bosnian locales.
+* **Industrial-luxe NUI** — vanilla JS, no build step, no CDN, CEF-safe, no emoji.
+* **Localization** — ships in **English**, fully translatable via the open `locales/` files.
+  More languages are planned over time.
 
 ## Dependencies
 
@@ -108,7 +109,7 @@ Everything lives in the open `config.lua`. The key sections:
 
 | Key | Meaning |
 |---|---|
-| `Config.Locale` | UI / notification language — `'en'` or `'ba'` (default `'ba'`; add more `locales/<code>.json`). |
+| `Config.Locale` | UI / notification language — default `'en'`; add more `locales/<code>.json` files to translate. |
 | `Config.Debug` | Gates every diagnostic print. Leave `false` in production. |
 | `Config.UI.accent` | Accent colour for the NUI (industrial-luxe gold by default). |
 

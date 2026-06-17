@@ -32,7 +32,7 @@ description: >-
 * **One accent recolors the pack** — change `Config.Theme.accent` and `opacity`; no UI files touched, no build step.
 * **CEF-safe** — no `backdrop-filter`; depth comes from gradients/shadows.
 * **Optional in-game showcase** — `/vlrui` demo command (off by default, ACE-gated).
-* **i18n** — config-driven locales, English and Bosnian included, independent of `ox:locale`.
+* **Localization** — ships in **English**, fully translatable via the open `locales/` files. More languages are planned over time. Config-driven and independent of `ox:locale`.
 * **Server & client notification exports** — push a notification to a specific player from the server.
 
 ## Dependencies
@@ -68,7 +68,7 @@ There is **no SQL to import** and **no items to register** — the pack stores n
 
 The compatibility loader replaces only the **UI functions** on each resource's `lib` table; every other `ox_lib` feature is untouched. It is non-blocking and falls back to stock `ox_lib` UI if `vlr_uipack` is stopped or ordered wrong.
 
-**Global setup (recommended):** append the contents of `install/ox_lib_hook.lua` to the end of `ox_lib/init.lua` (remove any old Prism UI hook first), then use this start order:
+**Global setup (recommended):** append the contents of `install/ox_lib_hook.lua` to the end of `ox_lib/init.lua` (remove any old UI override hook first), then use this start order:
 
 ```cfg
 ensure ox_lib
@@ -92,12 +92,12 @@ shared_scripts {
 For complete notification routing (catching direct `ox_lib:notify` events used by QBox server exports), also copy `install/ox_lib_notify.lua` over `ox_lib/resource/interface/client/notify.lua`. Individual compatibility groups can be toggled in `Config.Compatibility.components`.
 
 {% hint style="warning" %}
-If you are migrating from a Prism UI pack: remove any `@prism_uipack/config_init.lua` references and the Prism loader block from the end of `ox_lib/init.lua`. The Prism block uses a `repeat … until prism_uipack is started` loop that blocks every resource importing ox_lib whenever Prism is stopped — the Valora hook never waits and never throws.
+If you are migrating from a previous ox_lib UI override: remove any old UI-pack `config_init.lua` references and the old loader block from the end of `ox_lib/init.lua`. Some older blocks use a `repeat … until <ui_pack> is started` loop that blocks every resource importing ox_lib whenever that pack is stopped — the Valora hook never waits and never throws.
 {% endhint %}
 
 ### Optional: ox_target config bridge
 
-If your customized `ox_target` previously relied on Prism only for `getConfigValue`, copy `install/ox_target_valora_config.lua` to `ox_target/client/valora_config.lua` and load it before `client/main.lua`. It ships Valora defaults and does **not** create a hard dependency.
+If your customized `ox_target` previously relied on a separate UI pack only for `getConfigValue`, copy `install/ox_target_valora_config.lua` to `ox_target/client/valora_config.lua` and load it before `client/main.lua`. It ships Valora defaults and does **not** create a hard dependency.
 
 ## Database
 
@@ -111,7 +111,7 @@ Everything lives in the open `config.lua`.
 
 | Key | Meaning |
 |---|---|
-| `Config.Locale` | Active locale code (`'en'` / `'ba'`); independent of `ox:locale`. |
+| `Config.Locale` | Active locale code (default `'en'`); add more `locales/<code>.json` files to translate. Independent of `ox:locale`. |
 | `Config.Debug` | Gate for debug prints. |
 
 ### Theme — `Config.Theme`
@@ -265,7 +265,7 @@ Most integrations should call the **exports**, not these events. The events are 
 | Progress props not visible to others | Props replicate via OneSync state bags — enable OneSync and keep `Config.Progress.maxProps` ≥ 1. |
 | `/vlrui` does nothing | The demo is off by default. Set `Config.Demo.enabled = true` and grant the ACE (`add_ace group.admin vlr.uipack.demo allow`). |
 | A ghost panel stays on screen | Fixed in 1.0.5 (Backspace close path) — update to the latest version. |
-| Migrating from Prism: resources hang on start | Remove the Prism `repeat … until` loader block from `ox_lib/init.lua` and any `@prism_uipack/config_init.lua` references. |
+| Migrating from another UI pack: resources hang on start | Remove the old `repeat … until` loader block from `ox_lib/init.lua` and any old UI-pack `config_init.lua` references. |
 
 ---
 

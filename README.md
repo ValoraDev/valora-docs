@@ -35,7 +35,9 @@ Every resource in the suite follows the same rules, so once you know one you kno
 * **ox baseline** — `ox_lib` for notifications, callbacks and context menus; `oxmysql` for storage where applicable.
 * **Server-authoritative** — money, items and permissions are always validated on the server. The client is never trusted.
 * **Open config** — `config.lua`, `locales/*.json` and the NUI (`html/*`) are always left open (escrow-ignored) so you can fully theme and translate.
-* **Localised** — English (`en.json`) plus additional locales, with full key parity.
+* **English-first** — every script ships in **English** and is fully translatable through
+  its open `locales/` files. More community translations (French, Turkish, and other
+  popular FiveM languages) are planned over time.
 
 ## Need a license?
 

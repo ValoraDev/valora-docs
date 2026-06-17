@@ -49,8 +49,8 @@ body damage so a car comes back exactly as it was parked.
   per-type map blips.
 * **Themeable NUI** — clean vanilla NUI with a configurable accent color and per-vehicle
   preview images from local files, uz_AutoShot, or a CDN.
-* **i18n** — config-driven locales in `locales/*.lua` (`en` and `ba` complete; `de`, `es`,
-  `fr` provided as starting points).
+* **Localization** — ships in **English**, fully translatable via the open `locales/` files.
+  More languages are planned over time.
 
 ## Dependencies
 
@@ -163,7 +163,7 @@ blip/vehicle-type defaults live in `config/garages.lua`. Key groups:
 
 | Key | Purpose |
 |---|---|
-| `Config.DefaultLocale` | Active locale (`ba` / `en` / `de` / `es` / `fr`). |
+| `Config.DefaultLocale` | Active locale (default `en`). Add more `locales/<code>` files to translate. |
 | `Config.FallbackLocale` | Used when a key is missing in the active locale. |
 
 ### General behavior
